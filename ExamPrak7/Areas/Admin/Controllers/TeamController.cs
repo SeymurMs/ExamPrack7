@@ -1,6 +1,7 @@
 ﻿using ExamPrak7.DAL;
 using ExamPrak7.Models;
 using ExamPrak7.Utilize;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,8 @@ using System.Linq;
 namespace ExamPrak7.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
+
     public class TeamController : Controller
     {
         public readonly AppDbContext _context;

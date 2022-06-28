@@ -1,6 +1,8 @@
 using ExamPrak7.DAL;
+using ExamPrak7.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +31,25 @@ namespace ExamPrak7
             {
                 opt.UseSqlServer(Configuration["ConnectionStrings:default"]);
             });
+            services.AddIdentity<Appuser, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+            
+
+            
+            services.Configure<IdentityOptions>(opt =>
+            {
+                opt.Password.RequiredLength = 4;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = true;
+                opt.Password.RequireLowercase = true;
+                opt.Password.RequireDigit = true;
+               
+            });
+            services.ConfigureApplicationCookie(opt =>
+            {
+                opt.LoginPath = "/Auth/Login";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +66,7 @@ namespace ExamPrak7
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

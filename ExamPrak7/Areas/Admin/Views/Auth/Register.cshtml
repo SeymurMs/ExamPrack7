@@ -1,0 +1,54 @@
+﻿@using ExamPrak7.Areas.Admin.ViewModel.Autho
+@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="d-flex align-items-center justify-content-center text-center h-100vh">
+            <div class="form-wrapper m-auto">
+                <div class="form-container my-4">
+                    <div class="register-logo text-center mb-4">
+                        <img src="assets/dist/img/logo2.html" alt="">
+                    </div>
+                    <div class="panel">
+                        <div class="panel-header text-center mb-3">
+                            <h3 class="fs-24">Sign up for your account!</h3>
+                            <p class="text-muted text-center mb-0">Start your 15-day trial, no credit card required</p>
+                        </div>
+                        <a class="btn btn-linkedin btn-block bg-white text-left font-weight-normal position-relative mb-3"  href="#">
+                            <span>Sign up with LinkedIn</span>
+                        </a>
+                        <a class="btn  btn-google btn-block bg-white text-left font-weight-normal position-relative mb-3" href="#">
+                            <span>Sign up with Google</span>
+                        </a>
+                        <p class="text-muted text-center">We won't post anything without your permission and your personal details are kept private</p>
+                        <div class="divider font-weight-bold text-uppercase text-dark d-table text-center my-3">Or</div>
+                        <form class="register-form" method="post">
+                            <div class="form-group">
+                                <input type="text" asp-for="FirstName"  class="form-control" id="f_name" placeholder="First name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" asp-for="LastName" class="form-control" id="l_name" placeholder="Last name">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" asp-for="UserName" class="form-control" id="l_name" placeholder="Last name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" asp-for="Email" class="form-control" id="emial" placeholder="Enter email">
+                                <div class="invalid-feedback text-left">Enter your valid email</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" asp-for="Password" class="form-control" id="pass" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" asp-for="ConfirmPassword" class="form-control" id="pass" placeholder="Confrim Password">
+                            </div>
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                            <button type="submit" class="btn btn-success btn-block">Sign up</button>
+                            <p>Hace Acoount <a class="btn" asp-controller="Auth" asp-action="Login">Go login</a>  </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
