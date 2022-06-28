@@ -50,7 +50,7 @@ namespace ExamPrak7.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(LoginVM Login)
+        public async Task<IActionResult> Login(LoginVM Login,string returnUrl)
         {
             Appuser user;
             if (Login.UserNameOrEmail.Contains("@"))
@@ -67,9 +67,14 @@ namespace ExamPrak7.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("", "Nese YAnlisdir ");  
             }
-
+            if (returnUrl != null) return LocalRedirect(returnUrl);
 
             return RedirectToAction("Index", "Dashboard");
+        }
+        public async Task<IActionResult> SignOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(Register));
         }
 
     }

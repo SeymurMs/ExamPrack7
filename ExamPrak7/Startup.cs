@@ -48,7 +48,7 @@ namespace ExamPrak7
             });
             services.ConfigureApplicationCookie(opt =>
             {
-                opt.LoginPath = "/Auth/Login";
+                opt.LoginPath = "/Admin/Auth/Login";
             });
         }
 

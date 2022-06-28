@@ -49,9 +49,15 @@
                 <div class="avatar online">
                     <img src="~/admin/dist/img/avatar-1.jpg" class="img-fluid rounded-circle" alt="">
                 </div>
+                @if (User.Identity.IsAuthenticated)
+                {
                 <div class="profile-text">
-                    <h6 class="m-0">Naeem Khan</h6>
+                    <h6 class="m-0">@User.Identity.Name
+                    </h6>
                 </div>
+                   <a class="btn btn-primary" asp-controller="Auth" asp-action="SignOut">Log Out</a>
+                    
+                }
             </div>
             <!--/.profile element-->
             <form class="search sidebar-form" action="#" method="get">
